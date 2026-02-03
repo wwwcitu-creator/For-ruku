@@ -19,57 +19,44 @@ body{
 }
 
 .card{
-  width:min(92vw,380px);
+  width:90%;
+  max-width:380px;
   background:rgba(255,255,255,0.18);
   backdrop-filter:blur(14px);
   border-radius:22px;
   padding:18px;
   text-align:center;
   box-shadow:0 15px 35px rgba(0,0,0,0.35);
-  animation:fadeIn 1.2s ease;
 }
 
-h1{font-size:24px;margin:6px 0;}
-p{font-size:14.5px;line-height:1.45;}
-
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin:10px 0;
-}
-.gallery img{
-  width:100%;
-  aspect-ratio:3/4;
-  object-fit:cover;
-  border-radius:14px;
-  border:2px solid rgba(255,255,255,0.6);
-}
+h1{margin:6px 0;font-size:24px;}
+p{font-size:14.5px;}
 
 .buttons{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-top:10px;
-  position:relative;
+  margin-top:14px;
+  height:80px;
+  position:relative; /* VERY IMPORTANT */
 }
 
 button{
   border:none;
-  padding:12px 20px;
+  padding:12px 22px;
   border-radius:999px;
   font-size:15px;
   cursor:pointer;
-  transition:0.3s;
 }
 
-.yes{background:#ff3b6f;color:white;}
-.yes:hover{transform:scale(1.07);}
+.yes{
+  background:#ff3b6f;
+  color:white;
+}
 
 .no{
   background:white;
   color:#ff3b6f;
   position:absolute;
+  left:180px;
+  top:0;
 }
 
 .hidden{display:none;}
@@ -85,80 +72,59 @@ button{
   from{transform:translateY(0);opacity:1}
   to{transform:translateY(-100vh);opacity:0}
 }
-
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-.small{font-size:12px;opacity:0.9}
 </style>
 </head>
 
 <body>
 
 <audio id="music" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
 </audio>
 
 <div class="card" id="main">
   <h1>Ruku ❤️</h1>
-  <p>
-    Some people feel like home.<br>
-    You are mine.
-  </p>
+  <p>Will you be my Valentine? 💕</p>
 
-  <!-- 🔁 Replace image links with your real photos if you want -->
-  <div class="gallery">
-    <img src="IMG_5269_Original.jpeg">
-    <img src="IMG_3951_Original.jpeg">
-  </div>
-
-  <h1>Will you be my Valentine? 💕</h1>
-
-  <div class="buttons" id="btnArea">
+  <div class="buttons" id="btnBox">
     <button class="yes" onclick="yesClick()">YES 💖</button>
     <button class="no" id="noBtn">NO 🙈</button>
   </div>
 
-  <p class="small">Try pressing NO 😜</p>
+  <p style="font-size:12px;opacity:0.9">Try pressing NO 😜</p>
 </div>
 
 <div class="card hidden" id="yesPage">
-  <h1>YAYYYY 💞🎉</h1>
+  <h1>YAYYYY 💞</h1>
   <p>
-    You just made my heart smile.<br><br>
-    I choose you — today,<br>
-    tomorrow, and always. 🌹
+    You chose love ❤️<br><br>
+    I choose you — always 🌹
   </p>
 </div>
 
 <script>
 const noBtn = document.getElementById("noBtn");
-const area = document.getElementById("btnArea");
-let count = 0;
+const box = document.getElementById("btnBox");
 
+let count = 0;
 const lines = [
   "Oops 😜",
-  "Nice try 😂",
-  "Only YES works 💕",
-  "That option expired 🙈",
+  "Missed me 😂",
+  "Only YES 💕",
+  "Nice try 🙈",
   "Destiny says YES 💖"
 ];
 
 function moveNo(){
-  const r = area.getBoundingClientRect();
-  const x = Math.random()*(r.width-80);
-  const y = Math.random()*40;
-  noBtn.style.left = x+"px";
-  noBtn.style.top = y+"px";
+  const w = box.offsetWidth - noBtn.offsetWidth;
+  const x = Math.random() * w;
+  noBtn.style.left = x + "px";
   noBtn.innerText = lines[count % lines.length];
   count++;
-  if(count > 5) noBtn.style.display="none";
+  if(count > 6) noBtn.style.display = "none";
 }
 
 noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("touchstart", e => {
+noBtn.addEventListener("touchstart", function(e){
   e.preventDefault();
   moveNo();
 });
@@ -167,23 +133,21 @@ function yesClick(){
   document.getElementById("main").classList.add("hidden");
   document.getElementById("yesPage").classList.remove("hidden");
   document.getElementById("music").play();
-  burstHearts();
+  hearts();
 }
 
-function heart(){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=(Math.random()*3+4)+"s";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
+function hearts(){
+  for(let i=0;i<25;i++){
+    setTimeout(()=>{
+      const h=document.createElement("div");
+      h.className="heart";
+      h.innerHTML="❤️";
+      h.style.left=Math.random()*100+"vw";
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),6000);
+    }, i*120);
+  }
 }
-
-function burstHearts(){
-  for(let i=0;i<30;i++) setTimeout(heart,i*120);
-}
-setInterval(heart,900);
 </script>
 
 </body>
