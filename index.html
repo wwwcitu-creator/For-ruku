@@ -6,7 +6,7 @@
     <title>For Ruku ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #ff4d6d; --bg: #fff0f3; --soft: #ffb3c1; }
+        :root { --primary: #ff4d6d; --bg: #fff0f3; }
         body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--bg); display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; }
         
         .hearts-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
@@ -15,124 +15,124 @@
             background: white; padding: 30px; border-radius: 40px; 
             box-shadow: 0 25px 60px rgba(255, 77, 109, 0.3); 
             width: min(85vw, 400px); z-index: 10; text-align: center;
-            border: 4px solid var(--primary); transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 4px solid var(--primary); transition: all 0.6s ease;
         }
 
         .slideshow-container {
             position: relative; width: 100%; height: 420px; 
             border: 10px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             margin-bottom: 20px; overflow: hidden; border-radius: 15px;
-            transform: rotate(-2deg); transition: 0.5s;
+            transform: rotate(-2deg);
         }
-        .slideshow-container:hover { transform: rotate(0deg) scale(1.02); }
         
-        .mySlides { display: none; width: 100%; height: 100%; object-fit: cover; animation: zoomFade 4s infinite; }
-        @keyframes zoomFade { 
-            0% { opacity: 0; transform: scale(1.2); } 
-            20% { opacity: 1; transform: scale(1.1); } 
-            80% { opacity: 1; transform: scale(1.05); } 
-            100% { opacity: 0; transform: scale(1); } 
-        }
+        .mySlides { display: none; width: 100%; height: 100%; object-fit: cover; }
 
         h1 { font-family: 'Dancing Script', cursive; color: var(--primary); font-size: 2.2rem; margin: 10px 0; }
-        p { color: #555; font-size: 1rem; }
+        p { color: #444; line-height: 1.6; }
 
         .buttons { display: flex; justify-content: center; gap: 15px; margin-top: 25px; min-height: 60px; position: relative; }
         button { padding: 14px 30px; font-size: 1.1rem; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; }
         
         #yesBtn { background: var(--primary); color: white; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); }
-        #noBtn { background: #f0f0f0; color: #888; position: absolute; left: 210px; }
+        #noBtn { background: #f0f0f0; color: #888; position: absolute; left: 210px; z-index: 20; }
 
-        .letter { display: none; text-align: left; animation: slideUp 1.5s ease; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Music Toggle */
-        .music-control { position: fixed; bottom: 20px; right: 20px; background: white; padding: 10px; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer; z-index: 100; font-size: 20px; border: 2px solid var(--primary); }
+        .letter { display: none; text-align: center; animation: slideUp 1s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
     <div class="hearts-bg" id="heartsBg"></div>
-    
-    <iframe id="youtubeAudio" style="display:none" width="0" height="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0"></iframe>
-    <div class="music-control" onclick="toggleMusic()">🎵</div>
 
     <div class="container" id="mainCard">
         <div id="gameContent">
             <div class="slideshow-container">
-                <img src="IMG_5269_Original.jpeg" class="mySlides">
                 <img src="IMG_3591_Original.jpeg" class="mySlides">
+                <img src="IMG_5269_Original.jpeg" class="mySlides">
                 <img src="IMG_2058_Original.jpeg" class="mySlides">
             </div>
-            <h1>Will you be mine, Ruku?</h1>
+            <h1 id="headline">Will you be my Valentine, Ruku? ❤️</h1>
             <div class="buttons">
                 <button id="yesBtn" onclick="showLetter()">YES!</button>
-                <button id="noBtn" onmouseover="dodge()">No</button>
+                <button id="noBtn" onmouseover="dodge()" onclick="dodge()">No</button>
             </div>
         </div>
 
         <div id="letterContent" class="letter">
-            <h1 style="text-align: center;">My Dearest Ruku,</h1>
-            <p>Every time I look at these photos, I'm reminded of how lucky I am to have you in my life. You make every ordinary day feel extraordinary.</p>
-            <p>I built this tiny piece of the digital world just for you, to show you that no matter where we are, you're always in my thoughts.</p>
-            <p style="text-align: center; font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--primary);">I Love You Always. ❤️</p>
-            <div style="text-align: center; font-size: 40px; margin-top: 10px;">🌹🦋✨</div>
+            <h1>My Dearest Ruku,</h1>
+            <p>Sometimes it’s hard to put into words just how much you mean to me, but I wanted to find a way to show you. Looking at these photos brings back every beautiful memory we’ve made together, and it reminds me that every smile and every moment with you is something I truly treasure.</p>
+            <p>Thank you for being my person, my best friend, and now... my Valentine. You deserve all the love and happiness in the world today.</p>
+            <p style="font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--primary); margin-top: 20px;">Forever yours, ❤️</p>
+            <div style="font-size: 40px; margin-top: 10px;">🌹✨🦋</div>
         </div>
     </div>
 
     <script>
-        let slideIndex = 0;
-        showSlides();
+        // Funny messages when she tries to click NO
+        const funnyLines = [
+            "Ruku, you're clicking the wrong one! 😂", 
+            "I've locked this button! 🔒", 
+            "Think of the chocolates! 🍫", 
+            "You're too slow, beautiful! 🏃‍♀️", 
+            "Is that your final answer? 🧐", 
+            "Just click the big red button! ❤️",
+            "Nope! Not today! 😋"
+        ];
 
-        function showSlides() {
-            let slides = document.getElementsByClassName("mySlides");
-            for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";  
-            slideIndex++;
-            if (slideIndex > slides.length) slideIndex = 1;    
-            slides[slideIndex-1].style.display = "block";  
-            setTimeout(showSlides, 4000); 
-        }
+        let lineIndex = 0;
 
         function dodge() {
             const btn = document.getElementById('noBtn');
-            btn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-            btn.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 100);
+            
             btn.style.position = 'fixed';
-            document.querySelector('h1').innerText = "Nice try, Ruku! 😂";
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+            
+            document.getElementById('headline').innerText = funnyLines[lineIndex];
+            lineIndex = (lineIndex + 1) % funnyLines.length;
         }
 
         function showLetter() {
             document.getElementById('gameContent').style.display = 'none';
             document.getElementById('letterContent').style.display = 'block';
             document.getElementById('mainCard').style.transform = 'scale(1.05)';
+            // Start faster heart rain
             setInterval(createHeart, 100);
         }
 
+        // Automatic Slideshow Logic
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";  
+            slideIndex++;
+            if (slideIndex > slides.length) slideIndex = 1;    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); 
+        }
+        showSlides();
+
+        // Falling Hearts and Roses Logic
         function createHeart() {
             const heart = document.createElement('div');
             heart.innerHTML = Math.random() > 0.5 ? '❤️' : '🌹';
             heart.style.position = 'fixed';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = '-20px';
-            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heart.style.top = '100vh';
+            heart.style.color = '#ff4d6d';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
             heart.style.transition = 'transform 4s linear, opacity 4s';
             document.getElementById('heartsBg').appendChild(heart);
             setTimeout(() => {
-                heart.style.transform = `translateY(110vh) rotate(${Math.random() * 720}deg)`;
+                heart.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
                 heart.style.opacity = '0';
             }, 100);
             setTimeout(() => heart.remove(), 5000);
         }
-
-        function toggleMusic() {
-            const frame = document.getElementById('youtubeAudio');
-            const src = frame.src;
-            frame.src = src.includes('autoplay') ? src.replace('&autoplay=1','') : src + '&autoplay=1';
-        }
-        
-        // Background petals
-        setInterval(createHeart, 500);
+        // Start subtle rain immediately
+        setInterval(createHeart, 600);
     </script>
 </body>
 </html>
-
